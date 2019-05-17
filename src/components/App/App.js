@@ -11,6 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.cacheSearchTerm = this.cacheSearchTerm.bind(this);
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
@@ -20,9 +21,13 @@ class App extends React.Component {
     this.state = {
       searchResults: [],
       playlistName: 'New Playlist',
-
       playlistTracks: [],
     }
+  }
+
+  cacheSearchTerm(term) {
+    sessionStorage.setItem('searchTerm', term);
+    console.log(sessionStorage);
   }
 
   addTrack(track) {
